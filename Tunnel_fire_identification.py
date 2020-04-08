@@ -251,7 +251,7 @@ for q in np.arange(0, int(np.round(np.array(factor_values).shape[0])), 1):
     # split the train data and test data
     # set the amount of test data as 0.1 times of the whole dataset
     # the names of *_test are the testing data, while the names without _test are training data
-    test_ratio = 0.05
+    test_ratio = 0.20
     Truth_df_test = Truth_df[:int(test_ratio*Truth_df.shape[0])]
     Train_df_test = Train_df[:int(test_ratio*Train_df.shape[0])]
     
@@ -290,7 +290,7 @@ for q in np.arange(0, int(np.round(np.array(factor_values).shape[0])), 1):
     model1.compile(loss='mean_squared_error', optimizer='rmsprop',metrics=[r2_total, r2_loc, r2_hrr, r2_wind])
     
     # fit the network
-    history1 = model1.fit(Train_df, Truth_df, epochs=500, batch_size=800, validation_split=0.2, verbose=1)
+    history1 = model1.fit(Train_df, Truth_df, epochs=500, batch_size=800, validation_split=0.25, verbose=1)
 
     # write the data into sheet
     for out_var in output_variables:
